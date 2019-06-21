@@ -4,7 +4,6 @@ class Courses extends React.Component {
    
     constructor(props){
         super(props);
-        //this.handleCourseClick = this.handleCourseClick.bind(this);
     }
 
 
@@ -16,7 +15,7 @@ class Courses extends React.Component {
                     this.props.data.length > 0 ? (
                         <ul>
                         {
-                            this.props.data.map(course => <li style={{listStyle:'none', padding:'20px', fontSize:'24px',backgroundColor:'lightblue', color:'#ffffff', margin:'30px', width:'30%'}} id={course.id}
+                            this.props.data.map(course => <li style={{listStyle:'none', padding:'30px', fontSize:'24px',backgroundColor:'lightblue', color:'#ffffff', margin:'20px', width:'30%'}} id={course.id}
                                     key={course.id} 
                                     onClick={(event)=> this.props.handleClick(event)}>{course.name}</li>)
                         }

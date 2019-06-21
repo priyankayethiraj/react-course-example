@@ -1,36 +1,34 @@
-import React from 'react'
-import ReactDom from 'react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import App from './App';
-import  'bootstrap/dist/css/bootstrap.min.css';
-import {BrowserRouter} from 'react-router-dom';
-import Route from 'react-router-dom/Route';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {BrowserRouter, Route, NavLink} from 'react-router-dom';
+import AddCourse from './components/Addcourse';
+import CourseDetails from './components/CourseDetails';
 
+ReactDOM.render(
+    <BrowserRouter>
+        <ul>
+            <li>
+               <NavLink activeStyle={{color:'purple'}} exact to="/">Home</NavLink>
+                
+            </li>
+            <li>
+                <NavLink  activeStyle={{color:'purple'}} exact to="/add">Add Course</NavLink>
+            </li>
+            <li>
+                <NavLink activeStyle={{color:'purple'}} exact to="/courses/4">Course Details</NavLink>
+            </li>
+        </ul>
+       <Route path="/" exact component={App}/>
+       <Route path="/add" exact component={AddCourse}/>
 
-ReactDom.render(
-<BrowserRouter>
-
-
-<Route path="/" exact render ={
-    ()=>{
-        return (<h1>This is home page</h1>)
-
-    }
-}/>
-
-<Route path="/add" exact render ={
-    ()=>{
-        return (<h1>This is Add Course page</h1>)
-
-    }
-}/>
-
-<Route path="/details" exact render ={
-    ()=>{
-        return (<h1>This is Course details page</h1>)
-
-    }
-}/>
-<App/>
-
-</BrowserRouter>,
-document.getElementById('root'));
+       <Route path="/courses/:id" exact render={
+           ({match})=>{
+               console.log(match);
+              return (<CourseDetails selectedCourseId={match.params.id}/>)
+            }
+        }/>
+    </BrowserRouter>, 
+    
+    document.getElementById('root'));
