@@ -1,18 +1,20 @@
 import React from 'react';
 import './App.css';
-import Courses from './Courses';
+import Courses from './Courses.js';
 
 class App extends React.Component {
 
   constructor(props){ 
     super(props)
-    this.courses=[
-      'React',
-      'Angular',
-      'Java 8',
-      'Spring',
-      'Hibernate'
-    ];
+    this.state={
+      courses :[
+        {name:'React',id:1, price:10000, duration:10},
+        {name:'Angular',id:2, price:12000, duration:8},
+        {name:'Java',id:3, price:15000, duration:20},
+        {name:'Spring',id:4, price:20000, duration:12},
+        {name:'Hibernate',id:5, price:8000, duration:5}
+      ]
+    }
     this.handleCourseClick = this.handleCourseClick.bind(this);
   }
   
@@ -22,7 +24,7 @@ class App extends React.Component {
   render(){ 
     return (
         <div>
-          <Courses data={this.courses} handleClick={this.handleCourseClick}/>
+          <Courses data={this.state.courses} handleClick={this.handleCourseClick}/>
         </div>
     );
   }
