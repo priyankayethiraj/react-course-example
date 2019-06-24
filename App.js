@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
-import Courses from './Courses.js';
+import  courses from './data/courses';
+import { WrapperComponent } from './components/WrapperComponent';
 
 class App extends React.Component {
 
@@ -24,7 +25,7 @@ class App extends React.Component {
   render(){ 
     return (
         <div>
-          <Courses data={this.state.courses} handleClick={this.handleCourseClick}/>
+          <WrapperComponent/>
         </div>
     );
   }
